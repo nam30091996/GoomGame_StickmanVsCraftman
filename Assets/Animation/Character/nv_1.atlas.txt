@@ -1,0 +1,16 @@
+nv_1.png
+size:256,128
+filter:Linear,Linear
+pma:true
+body
+bounds:2,18,66,72
+rotate:90
+chan duoi
+bounds:139,14,70,19
+rotate:90
+dui
+bounds:2,2,70,14
+head
+bounds:76,23,61,61
+tay
+bounds:76,7,50,14
