@@ -1,0 +1,10 @@
+ruong_tien.png
+size:512,128
+filter:Linear,Linear
+pma:true
+hom-dong
+bounds:179,2,140,114
+hom-mo
+bounds:2,10,175,106
+laplanh
+bounds:321,20,91,96
