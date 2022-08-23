@@ -65,8 +65,7 @@ namespace Lean.Gui
 			}
 			else
 			{
-				// safeMin.y = 0.0f;
-				safeMin.y = Mathf.Max(safeMin.y, verticalRange.x * screenH);
+				safeMin.y = 0.0f;
 				safeMax.y = Mathf.Min(safeMax.y, verticalRange.y * screenH);
 			}
 

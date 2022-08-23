@@ -2,13 +2,12 @@ using System.Collections;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Singleton<PlayerController>
 {
     private Animator animator;
 
     [HideInInspector] public float horizontal;
-    private float speed = 8f;
-    private float jumpingPower = 15f;
+    public float moveSpeed = 8f, jumpingPower = 15f, atkSpeed = 0.5f;
     private bool isFacingRight = true;
 
     private Rigidbody2D rb;
@@ -39,7 +38,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         if (!speeding && !attacking)
-            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+            rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
         if (speeding)
         {
             if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
@@ -71,8 +70,8 @@ public class PlayerController : MonoBehaviour
         speeding = true;
         canSpeed = false;
         animator.Play("speed");
-        if (isFacingRight) rb.velocity = new Vector2(speed * 4, rb.velocity.y);
-        else rb.velocity = new Vector2(speed * -4, rb.velocity.y);
+        if (isFacingRight) rb.velocity = new Vector2(moveSpeed * 4, rb.velocity.y);
+        else rb.velocity = new Vector2(moveSpeed * -4, rb.velocity.y);
         StartCoroutine(StopSpeed());
     }
 
@@ -110,7 +109,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator StopSpeed()
     {
         yield return new WaitForSeconds(0.2f);
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
         speeding = false;
         yield return new WaitForSeconds(0.2f);
         canSpeed = true;
@@ -118,13 +117,12 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator StopAttack()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(atkSpeed);
         attacking = false;
     }
-}
 
-public enum MoveDirection
-{
-    LEFT,
-    RIGHT,
+    public void GetDame(int dame)
+    {
+        Debug.Log(dame);
+    }
 }

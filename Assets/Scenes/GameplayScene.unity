@@ -837,7 +837,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2325,9 +2325,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1704029179466653370, guid: 9d1fa298e6b2e3f4e930b6becb073494, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 6d99ca01222e06341bc3e32a20e08fb8, type: 2}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1704029179466653373, guid: 9d1fa298e6b2e3f4e930b6becb073494, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2341,9 +2341,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 886191383184333073, guid: 6b5cdfdfd004d1648bd99a63ba7b8d47, type: 3}
+      propertyPath: firstPoint
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 3415102222493958950, guid: 6b5cdfdfd004d1648bd99a63ba7b8d47, type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3487230655000856550, guid: 6b5cdfdfd004d1648bd99a63ba7b8d47, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3487230655000856551, guid: 6b5cdfdfd004d1648bd99a63ba7b8d47, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3545080173356895415, guid: 6b5cdfdfd004d1648bd99a63ba7b8d47, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805898255524755342, guid: 6b5cdfdfd004d1648bd99a63ba7b8d47, type: 3}
+      propertyPath: lastPoint
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805898255524755342, guid: 6b5cdfdfd004d1648bd99a63ba7b8d47, type: 3}
+      propertyPath: firstPoint
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4672564095603463596, guid: 6b5cdfdfd004d1648bd99a63ba7b8d47, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2408,6 +2432,14 @@ PrefabInstance:
     - target: {fileID: 5430920501033442299, guid: 6b5cdfdfd004d1648bd99a63ba7b8d47, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6787741923176586600, guid: 6b5cdfdfd004d1648bd99a63ba7b8d47, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6787741923176586601, guid: 6b5cdfdfd004d1648bd99a63ba7b8d47, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8270402167535570983, guid: 6b5cdfdfd004d1648bd99a63ba7b8d47, type: 3}
       propertyPath: m_Materials.Array.data[0]

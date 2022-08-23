@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - GamePlayObject
   layers:
   - Default
   - TransparentFX
@@ -40,4 +41,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 4152351207
+    locked: 0
+  - name: Game Object
+    uniqueID: 4102508647
+    locked: 0
+  - name: Enemy
+    uniqueID: 2884605359
+    locked: 0
+  - name: Dart
+    uniqueID: 563637125
+    locked: 0
+  - name: Player
+    uniqueID: 1761362061
     locked: 0

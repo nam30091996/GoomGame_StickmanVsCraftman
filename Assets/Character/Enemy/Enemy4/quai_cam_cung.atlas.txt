@@ -1,0 +1,28 @@
+quai_cam_cung.png
+size:1024,256
+filter:Linear,Linear
+pma:true
+Layer 35
+bounds:161,64,148,116
+offsets:1,1,150,118
+rotate:90
+Layer 36
+bounds:279,155,57,276
+offsets:1,1,59,278
+rotate:90
+Layer 39
+bounds:279,96,57,276
+offsets:1,1,59,278
+rotate:90
+Layer 41 copy
+bounds:161,2,60,280
+offsets:1,1,62,282
+rotate:90
+Layer 41
+bounds:161,2,60,280
+offsets:1,1,62,282
+rotate:90
+Rectangle 2 copy 3
+bounds:2,8,204,157
+offsets:1,1,206,159
+rotate:90
