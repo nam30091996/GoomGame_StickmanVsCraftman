@@ -6,13 +6,14 @@ public class Enemy : MonoBehaviour
 {
     public float moveSpeed;
     public float atkSpeed = 0.5f;
-    public int hp, atk;
+    public int maxHp, atk, currentHp;
+    public HPBarController hpBar;
 
     protected Rigidbody2D rb;
     protected Animator animator;
     protected Status status;
     protected Transform player;
-    protected bool canAttack = false;
+    protected bool canAttack = false, die = false;
 
     protected void Awake()
     {
@@ -20,6 +21,7 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         status = Status.MOVING;
         player = PlayerController.Instance.transform;
+        hpBar.Init(maxHp);
     }
 
     protected void Attack()
@@ -55,6 +57,36 @@ public class Enemy : MonoBehaviour
     }
 
     protected virtual void CheckDame(){}
+
+    private IEnumerator hideHpBar;
+    public void GetDame(int dame)
+    {
+        if (die) return;
+        hpBar.gameObject.SetActive(true);
+        currentHp -= dame;
+        if (currentHp <= 0)
+        {
+            Die();
+        }
+        hpBar.GetDame(dame);
+        if (hideHpBar != null) StopCoroutine(hideHpBar);
+        hideHpBar = HideHpBar();
+        StartCoroutine(hideHpBar);
+    }
+
+    private IEnumerator HideHpBar()
+    {
+        yield return new WaitForSeconds(5f);
+        hpBar.gameObject.SetActive(false);
+    }
+
+    private void Die()
+    {
+        die = true;
+        rb.velocity= Vector2.zero;
+        GetComponent<BoxCollider2D>().enabled = false;
+        animator.Play("die");
+    }
 }
 
 public enum Status

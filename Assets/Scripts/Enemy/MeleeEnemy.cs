@@ -10,7 +10,6 @@ public class MeleeEnemy : Enemy
     {
         base.Awake();
         status = Status.IDLING;
-        weaponPool = transform.GetChild(0).GetComponent<LeanGameObjectPool>();
     }
 
     private void Update()

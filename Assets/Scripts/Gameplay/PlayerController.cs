@@ -14,8 +14,9 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
-    private int jumpCount = 0;
+    private int jumpCount = 0, attackNum = 0;
     private bool canSpeed = true, speeding = false, attacking = false;
+    private float timeLastAttack = 0;
 
     private void Awake()
     {
@@ -77,10 +78,20 @@ public class PlayerController : Singleton<PlayerController>
 
     public void DoAttack()
     {
-        if (attacking || speeding || rb.velocity.y != 0) return;
+        if (attacking || speeding) return;
         attacking = true;
         rb.velocity = Vector2.zero;
-        animator.Play(GetComponent<SkinCombined>().weapon.ToString().ToLower() + "_attack" + Random.Range(0, 3));
+        if (Time.timeSinceLevelLoad - timeLastAttack >= atkSpeed + 0.25f)
+        {
+            attackNum = 0;
+        }
+        else
+        {
+            attackNum++;
+            if (attackNum > 2) attackNum = 0;
+        }
+        animator.Play(GetComponent<SkinCombined>().weapon.ToString().ToLower() + "_attack" + attackNum);
+        timeLastAttack = Time.timeSinceLevelLoad;
         StartCoroutine(StopAttack());
     }
 
@@ -115,14 +126,16 @@ public class PlayerController : Singleton<PlayerController>
         canSpeed = true;
     }
 
+    public Enemy enemy;
     private IEnumerator StopAttack()
     {
-        yield return new WaitForSeconds(atkSpeed);
+        yield return new WaitForSeconds(0.25f);
+        enemy.GetDame(2);
+        yield return new WaitForSeconds(atkSpeed - 0.25f);
         attacking = false;
     }
 
     public void GetDame(int dame)
     {
-        Debug.Log(dame);
     }
 }

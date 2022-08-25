@@ -15,7 +15,7 @@ public class HorizontalMoveEnemy: Enemy
 
     private void Update()
     {
-        if (status == Status.ATTACKING) return;
+        if (status == Status.ATTACKING || die) return;
         if (player.position.x >= firstPoint && player.position.x <= lastPoint && player.position.y < this.transform.position.y + 1)
         {
             status = Status.TARGETING;
@@ -32,6 +32,7 @@ public class HorizontalMoveEnemy: Enemy
 
     private void FixedUpdate()
     {
+        if (die) return;
         if (status == Status.ATTACKING)
         {
             rb.velocity = Vector2.zero;
