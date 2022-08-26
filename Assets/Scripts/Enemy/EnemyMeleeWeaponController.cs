@@ -15,7 +15,7 @@ public class EnemyMeleeWeaponController : MonoBehaviour
             other.GetComponent<PlayerController>().GetDame(atk);
             DoDespawn();
         }
-        else if (!other.CompareTag("GamePlayObject"))
+        else if (!other.CompareTag("GamePlayObject") && !other.CompareTag("EnemyDetect"))
         {
             transform.DOKill();
             Invoke(nameof(DoDespawn), 3f);

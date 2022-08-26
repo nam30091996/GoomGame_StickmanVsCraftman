@@ -37,6 +37,7 @@ Transform:
   m_Children:
   - {fileID: 1704029180095330738}
   - {fileID: 5022362858952326014}
+  - {fileID: 2449845989092464559}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -68,7 +69,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6d99ca01222e06341bc3e32a20e08fb8, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -174,15 +175,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23034b891c63b1c4598d38d0a4d7fead, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontal: 0
+  atk: 0
+  maxHp: 0
+  currentHp: 0
   moveSpeed: 8
   jumpingPower: 15
   atkSpeed: 0.5
+  noneWeaponDetect: {fileID: 8415001415901463243}
+  swordDetect: {fileID: 7150148260283826569}
   groundCheck: {fileID: 1704029180095330738}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  enemy: {fileID: 0}
 --- !u!50 &1704029179466653366
 Rigidbody2D:
   serializedVersion: 4
@@ -270,6 +274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5022362858952326014}
   - component: {fileID: 7242189094487439170}
+  - component: {fileID: 8415001415901463243}
   m_Layer: 0
   m_Name: EnemyDetect
   m_TagString: EnemyDetect
@@ -301,10 +306,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.0259519, y: 0.9723133}
+  m_Offset: {x: 0.6067646, y: 0.9723133}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -315,5 +320,89 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2554916, y: 1.9446266}
+  m_Size: {x: 1.0938662, y: 1.9446266}
   m_EdgeRadius: 0
+--- !u!114 &8415001415901463243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3380736801905123718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e950f320488ce25419a7f31a38412946, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listEnemy: []
+--- !u!1 &6121085545344693113
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2449845989092464559}
+  - component: {fileID: 4163105300524591564}
+  - component: {fileID: 7150148260283826569}
+  m_Layer: 0
+  m_Name: EnemyDetectSword
+  m_TagString: EnemyDetect
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2449845989092464559
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6121085545344693113}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1704029179466653368}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &4163105300524591564
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6121085545344693113}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.3172932, y: 0.9723133}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.6209059, y: 1.9446266}
+  m_EdgeRadius: 0
+--- !u!114 &7150148260283826569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6121085545344693113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e950f320488ce25419a7f31a38412946, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listEnemy: []

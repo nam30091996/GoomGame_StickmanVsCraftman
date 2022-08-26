@@ -1,18 +1,34 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyDetect : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public List<Enemy> listEnemy;
+
+    private void Start()
     {
-        
+        listEnemy = new List<Enemy>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ResetListEnemy()
     {
-        
+        listEnemy.Clear();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            listEnemy.Add(other.GetComponent<Enemy>());
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            listEnemy.Remove(other.GetComponent<Enemy>());
+        }
     }
 }

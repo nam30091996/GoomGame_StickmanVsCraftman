@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
@@ -6,8 +7,10 @@ public class PlayerController : Singleton<PlayerController>
 {
     private Animator animator;
 
-    [HideInInspector] public float horizontal;
+    public int atk, maxHp, currentHp;
     public float moveSpeed = 8f, jumpingPower = 15f, atkSpeed = 0.5f;
+    public EnemyDetect noneWeaponDetect, swordDetect;
+    
     private bool isFacingRight = true;
 
     private Rigidbody2D rb;
@@ -17,7 +20,7 @@ public class PlayerController : Singleton<PlayerController>
     private int jumpCount = 0, attackNum = 0;
     private bool canSpeed = true, speeding = false, attacking = false;
     private float timeLastAttack = 0;
-
+    private float horizontal;
     private void Awake()
     {
         Application.targetFrameRate = 60;
@@ -126,11 +129,24 @@ public class PlayerController : Singleton<PlayerController>
         canSpeed = true;
     }
 
-    public Enemy enemy;
     private IEnumerator StopAttack()
     {
         yield return new WaitForSeconds(0.25f);
-        enemy.GetDame(2);
+        switch (GetComponent<SkinCombined>().weapon)
+        {
+            case Weapon.NONE:
+                foreach (Enemy enemy in noneWeaponDetect.listEnemy.ToList())
+                {
+                    enemy.GetDame(atk);
+                }
+                break;
+            case Weapon.SWORD:
+                foreach (Enemy enemy in swordDetect.listEnemy.ToList())
+                {
+                    enemy.GetDame(atk);
+                }
+                break;
+        }
         yield return new WaitForSeconds(atkSpeed - 0.25f);
         attacking = false;
     }

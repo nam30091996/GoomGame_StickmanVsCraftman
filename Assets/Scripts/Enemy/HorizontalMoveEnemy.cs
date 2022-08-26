@@ -87,9 +87,4 @@ public class HorizontalMoveEnemy: Enemy
             canAttack = false;
         }
     }
-
-    protected override void CheckDame()
-    {
-        if(canAttack) player.GetComponent<PlayerController>().GetDame(atk);
-    }
 }

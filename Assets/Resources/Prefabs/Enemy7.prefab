@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 6922524309391610506}
   - component: {fileID: -8516136478924235634}
   - component: {fileID: 881471768343740880}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy7
-  m_TagString: GamePlayObject
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 735fcb261538c514c9fe259571b76c12, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -200,6 +200,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6922524309391610502}
     m_Modifications:
+    - target: {fileID: 674102740649334986, guid: 8fc73a3d479249945b926bdc01f6c1eb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 867495220595127366, guid: 8fc73a3d479249945b926bdc01f6c1eb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1049812420034446738, guid: 8fc73a3d479249945b926bdc01f6c1eb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4766120122045507324, guid: 8fc73a3d479249945b926bdc01f6c1eb, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -259,6 +271,10 @@ PrefabInstance:
     - target: {fileID: 8279976356996628474, guid: 8fc73a3d479249945b926bdc01f6c1eb, type: 3}
       propertyPath: m_Name
       value: Hp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8279976356996628474, guid: 8fc73a3d479249945b926bdc01f6c1eb, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fc73a3d479249945b926bdc01f6c1eb, type: 3}

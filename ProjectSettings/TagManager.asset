@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GamePlayObject
   - EnemyDetect
+  - Enemy
   layers:
   - Default
   - TransparentFX

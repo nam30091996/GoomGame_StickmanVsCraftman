@@ -14,6 +14,7 @@ public class MeleeEnemy : Enemy
 
     private void Update()
     {
+        if (die) return;
         if (player.position.x >= transform.position.x - 10 && player.position.x <= transform.position.x + 10 && player.position.y < this.transform.position.y + 1)
         {
             canAttack = true;
