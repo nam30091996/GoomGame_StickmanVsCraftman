@@ -1,8 +1,14 @@
+using System;
 using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
-    public PlayerController playerController;
+    private PlayerController playerController;
+
+    private void Awake()
+    {
+        playerController = PlayerController.Instance;
+    }
 
     public void OnJumpClick()
     {

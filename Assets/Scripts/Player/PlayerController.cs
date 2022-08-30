@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -23,6 +24,7 @@ public class PlayerController : Singleton<PlayerController>
     private float horizontal;
     private void Awake()
     {
+        base.Awake();
         Application.targetFrameRate = 60;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -54,7 +56,7 @@ public class PlayerController : Singleton<PlayerController>
         {
         }
         else if (rb.velocity.y > 0) animator.Play("jumpUp");
-        else if (rb.velocity.y < 0) animator.Play("jumpDown");
+        else if (rb.velocity.y < 0 && !landOnElevator) animator.Play("jumpDown");
         else if (horizontal != 0) animator.Play("run");
         else animator.Play("idle");
     }
@@ -63,6 +65,7 @@ public class PlayerController : Singleton<PlayerController>
     {
         if (IsGrounded() || jumpCount == 1)
         {
+            landOnElevator = false;
             jumpCount++;
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
@@ -153,5 +156,19 @@ public class PlayerController : Singleton<PlayerController>
 
     public void GetDame(int dame)
     {
+        Debug.Log(dame);
+    }
+
+    private bool landOnElevator = false;
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Elevator"))
+        {
+            landOnElevator = true;
+        }
+        else
+        {
+            landOnElevator = false;
+        }
     }
 }

@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
         hpBar.Init(maxHp);
     }
 
-    protected void Attack()
+    protected virtual void Attack()
     {
         if (die) return;
         status = Status.ATTACKING;
@@ -68,7 +68,7 @@ public class Enemy : MonoBehaviour
     }
 
     private IEnumerator hideHpBar;
-    public void GetDame(int dame)
+    public virtual void GetDame(int dame)
     {
         if (die) return;
         hpBar.gameObject.SetActive(true);
@@ -91,7 +91,7 @@ public class Enemy : MonoBehaviour
         hpBar.gameObject.SetActive(false);
     }
 
-    private void Die()
+    protected void Die()
     {
         die = true;
         canAttack = false;
@@ -99,6 +99,8 @@ public class Enemy : MonoBehaviour
         GetComponent<BoxCollider2D>().enabled = false;
         hpBar.gameObject.SetActive(false);
         animator.Play("die");
+        
+        Signals.Get<OnEnemyDieSignal>().Dispatch();
     }
     
     public void ShowDame(int dame)
